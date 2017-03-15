@@ -1,0 +1,133 @@
+buildscript {
+    ext.kotlin_version = '1.1.0'
+    ext.junit_version = '4.12'
+    ext.freemarker_version = '2.3.23'
+    ext.spting_boot_version = '1.5.2.RELEASE'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath('se.transmode.gradle:gradle-docker:1.2')
+        classpath("org.freemarker:freemarker:$freemarker_version")
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$spting_boot_version")
+    }
+}
+
+group 'com.liuwill.demo'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'findbugs'
+apply plugin: 'application'
+apply plugin: "kotlin"
+apply plugin: 'docker'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    maven{ url 'http://maven.oschina.net/content/groups/public/'}
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    // tag::jetty[]
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    // end::jetty[]
+    // tag::actuator[]
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+
+    compile	"org.freemarker:freemarker:$freemarker_version"
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+jar {
+    baseName = 'springBootKotlinApplication'
+    version =  '0.1.0'
+}
+bootRepackage {
+    mainClass = 'com.liuwill.demo.kotlinBoot.SpringBootKotlinApplicationKt'
+}
+mainClassName = 'com.liuwill.demo.kotlinBoot.SpringBootKotlinApplicationKt'
+
+task buildDocker(type: Docker, dependsOn: build) {
+    push = true
+    applicationName = jar.baseName
+    dockerfile = file('src/main/docker/Dockerfile')
+    doFirst {
+        copy {
+            from jar
+            into stageDir
+        }
+    }
+}
+
+sourceSets{
+    main{
+        java {srcDir "src/main/java"}
+        kotlin {srcDir "src/main/kotlin"}
+        resources {srcDir "src/main/resources"}
+    }
+    test{
+        java {srcDir "src/test/java"}
+        kotlin {srcDir "src/test/kotlin"}
+        resources {srcDir "src/test/resources"}
+    }
+}
+
+compileKotlin {
+    kotlinOptions.suppressWarnings = true
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+task createJavaProject << {
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
+    sourceSets*.kotlin.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs()}
+}
+
+/*
+test {
+    //exclude 'com.liuwill.text.tools.*'
+    filter {
+        //include all integration tests
+        includeTestsMatching "*Test"
+
+        //include all tests from package
+        includeTestsMatching "com.liuwill.kata.test.*"
+    }
+}*/
+
+// [ FindBugs Start**/
+findbugs{
+    ignoreFailures=true
+    findbugsTest.enabled=false
+}
+
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+// ] FindBugs End**/
