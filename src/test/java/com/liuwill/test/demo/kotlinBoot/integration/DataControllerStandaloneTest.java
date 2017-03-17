@@ -21,13 +21,10 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-//@RunWith(SpringJUnit4ClassRunner.class) // SpringJUnit支持，由此引入Spring-Test框架支持！
-//@SpringApplicationConfiguration(classes = PdfApplication.class) // 指定我们SpringBoot工程的Application启动类
-//@WebAppConfiguration // 由于是Web项目，Junit需要模拟ServletContext，因此我们需要给我们的测试类加上@WebAppConfiguration。
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @SpringBootConfiguration
-public class DataControllerMvcTest {
+public class DataControllerStandaloneTest {
 
     @Autowired
     private WebApplicationContext wac;
@@ -36,7 +33,6 @@ public class DataControllerMvcTest {
 
     @Before
     public void setUp() throws Exception {
-        //mvc = MockMvcBuilders.webAppContextSetup(wac).build();
         mvc = MockMvcBuilders.standaloneSetup(new DataController()).build();
     }
 

@@ -10,9 +10,9 @@ import java.util.Map;
  * Created by videopls on 2017/3/16.
  */
 @RestController
-@RequestMapping(value = "api/show")
+@RequestMapping(value = "v1/api/data")
 public class ShowController {
-    @RequestMapping(value = "",method = {RequestMethod.GET,RequestMethod.PUT},consumes = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    @RequestMapping(value = "",method = { RequestMethod.PUT },consumes = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public Map index(@RequestBody HashMap<Object,Object> reqBody){
         return reqBody;
     }

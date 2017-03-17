@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
  * Created by liuwill on 2017/3/15.
  */
 @RestController
-@RequestMapping(value = "api/data")
+@RequestMapping(value = "/api/data")
 class DataController {
 
     @RequestMapping(value = "",method = arrayOf(RequestMethod.GET,RequestMethod.PUT))
@@ -25,7 +25,7 @@ class DataController {
         return resultMap
     }
 
-    @RequestMapping(value = "show",method = arrayOf(RequestMethod.GET,RequestMethod.PUT),consumes = arrayOf(MediaType.APPLICATION_JSON_UTF8_VALUE))
+    @RequestMapping(value = "show",method = arrayOf(RequestMethod.PUT),consumes = arrayOf(MediaType.APPLICATION_JSON_UTF8_VALUE))
     fun test(@RequestBody reqMap:Map<Any,Any>):Map<Any,Any>{
         return reqMap
     }
