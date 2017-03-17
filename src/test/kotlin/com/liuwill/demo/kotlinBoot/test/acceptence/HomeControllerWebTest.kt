@@ -1,4 +1,4 @@
-package com.liuwill.test.demo.kotlinBoot.acceptence
+package com.liuwill.demo.kotlinBoot.test.acceptence
 
 import com.liuwill.demo.kotlinBoot.SpringBootKotlinApplication
 import org.hamcrest.Matchers.*

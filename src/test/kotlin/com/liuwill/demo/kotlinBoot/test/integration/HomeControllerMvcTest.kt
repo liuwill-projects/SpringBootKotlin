@@ -1,4 +1,4 @@
-package com.liuwill.test.demo.kotlinBoot.integration
+package com.liuwill.demo.kotlinBoot.test.integration
 
 import com.liuwill.demo.kotlinBoot.SpringBootKotlinApplication
 import org.junit.runner.RunWith
@@ -28,7 +28,6 @@ class HomeControllerMvcTest {
     @Autowired
     private val wac: WebApplicationContext? = null
 
-    //@Autowired
     private var mvc: MockMvc? = null
 
     @Before
