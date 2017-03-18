@@ -1,0 +1,35 @@
+image: java:openjdk-8
+
+
+stages:
+  - test
+  - deploy
+before_script:
+  - apt-get update -y
+test_async:
+  stage: test
+  script:
+    - pwd
+    - cd /usr/lib
+    - curl -fl https://downloads.gradle.org/distributions/gradle-3.4.1-bin.zip -o gradle-bin.zip
+    - unzip "gradle-bin.zip"
+    - ln -s "/usr/lib/gradle-3.4.1/bin/gradle" /usr/bin/gradle
+    - rm "gradle-bin.zip"
+    - GRADLE_HOME=/usr/lib/gradle
+    - PATH=$PATH:$GRADLE_HOME/bin
+    - cd /builds/techartisan/SpringBootKotlin
+    - gradle test --info
+  tags:
+    - docker
+
+staging:
+  type: deploy
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev rubygems
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
+  only:
+    - deploy
+  tags:
+    - docker

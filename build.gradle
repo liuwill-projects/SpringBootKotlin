@@ -135,3 +135,7 @@ tasks.withType(FindBugs) {
     }
 }
 // ] FindBugs End**/
+
+task stage{
+    dependsOn "build"
+}
