@@ -1,6 +1,5 @@
 image: java:openjdk-8
 
-
 stages:
   - test
   - deploy
