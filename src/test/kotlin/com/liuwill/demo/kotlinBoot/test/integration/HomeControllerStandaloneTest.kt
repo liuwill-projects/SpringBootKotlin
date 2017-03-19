@@ -31,9 +31,9 @@ class HomeControllerStandaloneTest {
     @Test
     @Throws(Exception::class)
     fun indexTest() {
-        mvc!!.perform(MockMvcRequestBuilders.get("/index").accept(MediaType.TEXT_HTML))
+        mvc!!.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML))
                 .andExpect(status().isOk)
                 .andExpect(model().attributeExists("data"))
-                .andExpect { content().string(containsString("")) }
+                .andExpect { content().string(containsString("<title>Spring Boot Kotlin</title>")) }
     }
 }

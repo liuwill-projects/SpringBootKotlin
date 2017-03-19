@@ -18,9 +18,9 @@ class HomeController {
         return "index"
     }
 
-//    @RequestMapping(value = "/data",method = arrayOf(RequestMethod.GET))
-//    @ResponseBody fun data(pageModal: ModelMap):ModelMap{
-//        pageModal.put("data","test")
-//        return pageModal
-//    }
+    @RequestMapping(value = "/",method = arrayOf(RequestMethod.GET))
+    fun home(pageModal: ModelMap):String{
+        pageModal["data"] = "success"
+        return "index"
+    }
 }
