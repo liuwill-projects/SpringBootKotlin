@@ -3,8 +3,6 @@ package com.liuwill.demo.kotlinBoot.test.integration;
 /**
  * Created by videopls on 2017/3/17.
  */
-
-import com.liuwill.demo.kotlinBoot.SpringBootKotlinApplication;
 import com.liuwill.demo.kotlinBoot.controllers.DataController;
 import org.junit.Before;
 import org.junit.Test;

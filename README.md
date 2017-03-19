@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/liuwill/spring-boot-pdf.svg)](https://travis-ci.org/liuwill-project/SpringBootKotlin)
+[![Build Status](https://travis-ci.org/liuwill-projects/SpringBootKotlin.svg)](https://travis-ci.org/liuwill-project/SpringBootKotlin)
 
 # Spring Boot Kotlin
 
@@ -6,5 +6,15 @@
 
 ## 相关技术
 - kotlin
+- gradle
 - docker
 - spring boot
+
+## gradle命令
+```$shell
+gradle idea
+gradle bootRun
+gradle buildDocker
+gradle test
+
+```
