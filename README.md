@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/liuwill-projects/SpringBootKotlin.svg)](https://travis-ci.org/liuwill-project/SpringBootKotlin)
+[![Build Status](https://travis-ci.org/liuwill-projects/SpringBootKotlin.svg)](https://travis-ci.org/liuwill-projects/SpringBootKotlin)
 
 # Spring Boot Kotlin
 
