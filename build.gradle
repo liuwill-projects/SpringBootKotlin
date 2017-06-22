@@ -22,9 +22,12 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'findbugs'
 apply plugin: 'application'
 apply plugin: "kotlin"
+apply plugin: 'findbugs'
+apply plugin: 'pmd'
+apply plugin: 'checkstyle'
+apply plugin: "jacoco"
 apply plugin: 'docker'
 apply plugin: 'org.springframework.boot'
 
@@ -152,4 +155,30 @@ tasks.withType(FindBugs) {
 
 task stage(group: "custom"){
     dependsOn "build"
+}
+
+checkstyle{
+    toolVersion = '7.8.2'
+}
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.enabled false
+        html.enabled true
+        // html.stylesheet resources.text.fromFile('config/xsl/checkstyle-custom.xsl')
+    }
+    configFile = file('config/checkstyle/checkstyle.xml')
+}
+
+jacoco{
+    toolVersion = "0.7.9"
+    // reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+    reports{
+        xml.enabled false
+        csv.enabled false
+        html.destination "${buildDir}/jacocoHtml"
+    }
 }

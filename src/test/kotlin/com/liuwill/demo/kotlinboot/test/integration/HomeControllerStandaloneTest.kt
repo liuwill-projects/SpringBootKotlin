@@ -1,6 +1,6 @@
-package com.liuwill.demo.kotlinBoot.test.integration
+package com.liuwill.demo.kotlinboot.test.integration
 
-import com.liuwill.demo.kotlinBoot.controllers.HomeController
+import com.liuwill.demo.kotlinboot.controllers.HomeController
 import org.hamcrest.CoreMatchers.containsString
 import org.junit.Before
 import org.junit.Test

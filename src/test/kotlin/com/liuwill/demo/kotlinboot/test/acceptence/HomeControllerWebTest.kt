@@ -1,6 +1,6 @@
-package com.liuwill.demo.kotlinBoot.test.acceptence
+package com.liuwill.demo.kotlinboot.test.acceptence
 
-import com.liuwill.demo.kotlinBoot.SpringBootKotlinApplication
+import com.liuwill.demo.kotlinboot.SpringBootKotlinApplication
 import org.hamcrest.Matchers.*
 import org.junit.Assert.assertThat
 import org.junit.runner.RunWith
@@ -38,6 +38,6 @@ class HomeControllerWebTest {
     fun getIndex() {
         val response = restTemplate?.getForEntity(base.toString(), String::class.java)
         assertThat(response?.statusCodeValue, equalTo(200))
-        assertThat(response?.body,containsString("<title>Spring Boot Kotlin</title>"))
+        assertThat(response?.body, containsString("<title>Spring Boot Kotlin</title>"))
     }
 }

@@ -1,9 +1,10 @@
-package com.liuwill.demo.kotlinBoot.test.integration;
+package com.liuwill.demo.kotlinboot.test.integration;
 
 /**
  * Created by videopls on 2017/3/17.
  */
-import com.liuwill.demo.kotlinBoot.controllers.DataController;
+
+import com.liuwill.demo.kotlinboot.controllers.DataController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,8 +35,10 @@ public class DataControllerStandaloneTest {
 
     @Test
     public void getData() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/api/data").accept(MediaType.APPLICATION_JSON))
+        String expectStr = "{\"msg\":\"success\",\"code\":\"100010\",\"data\":\"data\",\"status\":true}";
+        mvc.perform(MockMvcRequestBuilders.get("/api/data")
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{\"msg\":\"success\",\"code\":\"100010\",\"data\":\"data\",\"status\":true}"));
+                .andExpect(content().json(expectStr));
     }
 }

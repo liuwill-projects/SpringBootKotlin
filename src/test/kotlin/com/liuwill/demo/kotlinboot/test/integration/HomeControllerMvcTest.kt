@@ -1,6 +1,6 @@
-package com.liuwill.demo.kotlinBoot.test.integration
+package com.liuwill.demo.kotlinboot.test.integration
 
-import com.liuwill.demo.kotlinBoot.SpringBootKotlinApplication
+import com.liuwill.demo.kotlinboot.SpringBootKotlinApplication
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
@@ -44,7 +44,7 @@ class HomeControllerMvcTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"))
                 .andExpect(model().attributeExists("data"))
-                .andExpect(model().attribute("data","success"))
+                .andExpect(model().attribute("data", "success"))
                 .andDo(print())
     }
 }

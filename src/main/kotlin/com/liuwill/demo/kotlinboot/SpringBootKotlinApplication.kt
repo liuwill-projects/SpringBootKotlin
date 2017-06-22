@@ -1,7 +1,6 @@
-package com.liuwill.demo.kotlinBoot
+package com.liuwill.demo.kotlinboot
 
 import org.springframework.boot.SpringApplication
-import org.springframework.boot.SpringBootConfiguration
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
 /**
@@ -10,6 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 @SpringBootApplication
 open class SpringBootKotlinApplication
 
-fun main(args: Array<String>){
-    SpringApplication.run(SpringBootKotlinApplication::class.java,*args)
+fun main(args: Array<String>) {
+    SpringApplication.run(SpringBootKotlinApplication::class.java, *args)
 }
