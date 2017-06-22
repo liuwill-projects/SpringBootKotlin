@@ -70,9 +70,11 @@ jar {
     baseName = 'boot-kotlin-app'
     version =  '0.1.0'
 }
+
 bootRepackage {
     mainClass = 'com.liuwill.demo.kotlinBoot.SpringBootKotlinApplicationKt'
 }
+
 mainClassName = 'com.liuwill.demo.kotlinBoot.SpringBootKotlinApplicationKt'
 
 task buildDocker(type: Docker, dependsOn: build, group: "custom") {
