@@ -163,8 +163,8 @@ checkstyle{
 
 tasks.withType(Checkstyle) {
     reports {
-        xml.enabled false
-        html.enabled true
+        xml.enabled = false
+        html.enabled = true
         // html.stylesheet resources.text.fromFile('config/xsl/checkstyle-custom.xsl')
     }
     configFile = file('config/checkstyle/checkstyle.xml')
@@ -177,8 +177,8 @@ jacoco{
 
 jacocoTestReport {
     reports{
-        xml.enabled false
-        csv.enabled false
-        html.destination "${buildDir}/jacocoHtml"
+        xml.enabled = false
+        csv.enabled = false
+        html.destination = "${buildDir}/jacocoHtml"
     }
 }
