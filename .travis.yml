@@ -4,4 +4,4 @@ jdk:
   - oraclejdk8
 
 install:
-   - gradle clean build
+   - gradle clean build --info
