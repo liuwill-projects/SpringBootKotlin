@@ -9,3 +9,6 @@ before_script:
 
 script:
   - ./gradlew clean build --info
+
+after_success:
+  - ./gradlew jacocoTestReport coveralls
