@@ -127,10 +127,12 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-task createJavaProject << {
-    sourceSets*.java.srcDirs*.each { it.mkdirs() }
-    sourceSets*.kotlin.srcDirs*.each { it.mkdirs() }
-    sourceSets*.resources.srcDirs*.each { it.mkdirs()}
+task createJavaProject {
+    doLast {
+        sourceSets*.java.srcDirs*.each { it.mkdirs() }
+        sourceSets*.kotlin.srcDirs*.each { it.mkdirs() }
+        sourceSets*.resources.srcDirs*.each { it.mkdirs()}
+    }
 }
 
 /*
