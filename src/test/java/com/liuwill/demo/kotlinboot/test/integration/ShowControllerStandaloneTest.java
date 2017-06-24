@@ -4,7 +4,7 @@ package com.liuwill.demo.kotlinboot.test.integration;
  * Created by videopls on 2017/3/17.
  */
 
-import com.liuwill.demo.kotlinboot.controllers.DataController;
+import com.liuwill.demo.kotlinboot.controllers.ShowController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,8 +21,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(DataController.class)
-public class DataControllerStandaloneTest {
+@WebMvcTest(ShowController.class)
+public class ShowControllerStandaloneTest {
 
 
     private WebApplicationContext wac;
@@ -36,24 +36,15 @@ public class DataControllerStandaloneTest {
 
     @Test
     public void getData() throws Exception {
-        String expectStr = "{\"msg\":\"success\",\"code\":\"100010\",\"data\":\"data\",\"status\":true}";
-        mvc.perform(MockMvcRequestBuilders.get("/api/data")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().json(expectStr));
-    }
-
-    @Test
-    public void getDataShow() throws Exception {
         String expectStr = "{\"msg\":\"hello\"}";
         mvc.perform(
-            MockMvcRequestBuilders.put("/api/data/show")
+            MockMvcRequestBuilders.put("/v1/api/data")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(expectStr)
                 .accept(MediaType.APPLICATION_JSON)
-        )
-        .andExpect(status().isOk())
-        .andExpect(content().json(expectStr))
-        .andDo(print());
+            )
+            .andExpect(status().isOk())
+            .andExpect(content().json(expectStr))
+            .andDo(print());
     }
 }

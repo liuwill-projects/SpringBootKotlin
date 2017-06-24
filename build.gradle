@@ -189,3 +189,25 @@ jacocoTestReport {
         // html.destination = "${buildDir}/jacocoHtml"
     }
 }
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.85
+            }
+        }
+
+        rule {
+            enabled = false
+            element = 'CLASS'
+            includes = ['com.liuwill.*']
+
+            limit {
+                counter = 'LINE'
+                value = 'TOTALCOUNT'
+                maximum = 0.3
+            }
+        }
+    }
+}
