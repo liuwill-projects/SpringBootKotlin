@@ -3,7 +3,7 @@ buildscript {
     ext.kotlin_version = '1.1.0'
     ext.junit_version = '4.12'
     ext.freemarker_version = '2.3.23'
-    ext.spting_boot_version = '1.5.2.RELEASE'
+    ext.spring_boot_version = '1.5.2.RELEASE'
 
     repositories {
         mavenCentral()
@@ -13,7 +13,7 @@ buildscript {
         classpath('se.transmode.gradle:gradle-docker:1.2')
         classpath("org.freemarker:freemarker:$freemarker_version")
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:$spting_boot_version")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version")
 
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.1'
     }
