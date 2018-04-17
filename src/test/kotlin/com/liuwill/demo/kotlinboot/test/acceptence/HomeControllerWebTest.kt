@@ -14,7 +14,7 @@ import org.junit.Test
 import java.net.URL
 
 /**
- * Created by videopls on 2017/3/17.
+ * Created by liuwill<liuwill@live.com> on 2017/3/17.
  */
 @RunWith(SpringJUnit4ClassRunner::class) // SpringJUnit支持，由此引入Spring-Test框架支持！
 @SpringBootTest(classes = arrayOf(SpringBootKotlinApplication::class), webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
